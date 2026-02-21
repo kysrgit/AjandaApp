@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kişisel Ajanda — Haftalık Plan & Fitness Takip</title>
+  <meta name="description"
+    content="Haftalık ders programı, antrenman rutini ve egzersiz detaylarını tek bir yerden takip edebileceğin kişisel planlama uygulaması." />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>" />
+</head>
+
+<body>
+
+  <!-- ===== LOCK SCREEN ===== -->
+  <div id="lock-screen" class="lock-screen">
+    <div class="lock-container">
+      <div class="lock-icon">🔒</div>
+      <h1 id="lock-title">🔒 Giriş Yap</h1>
+      <p id="lock-subtitle">Ajandana erişmek için şifreni gir</p>
+
+      <div class="lock-form">
+        <div class="lock-input-group">
+          <label for="lock-password">Şifre</label>
+          <input type="password" id="lock-password" class="lock-input" placeholder="Şifreni gir..." autocomplete="off"
+            autofocus />
+        </div>
+
+        <div id="lock-confirm-group" class="lock-input-group hidden">
+          <label for="lock-confirm">Şifre Tekrar</label>
+          <input type="password" id="lock-confirm" class="lock-input" placeholder="Şifreni tekrar gir..."
+            autocomplete="off" />
+        </div>
+
+        <div id="lock-error" class="lock-error"></div>
+
+        <button id="lock-btn" class="lock-btn">Giriş Yap</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN APP (hidden until unlocked) ===== -->
+  <div id="app-main" class="hidden">
+    <div class="app-wrapper">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-top">
+          <h1>📋 Haftalık Ajandam</h1>
+          <button id="settings-btn" class="icon-btn" title="Ayarlar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+            </svg>
+          </button>
+        </div>
+        <p class="subtitle">Ders programı & Antrenman takibi — tek bir yerde</p>
+        <div class="header-legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span>Fitness</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#10b981;"></span>Yüzme</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#f97316;"></span>Koşu</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#94a3b8;"></span>Dinlenme</div>
+        </div>
+      </header>
+
+      <!-- Weekly Grid -->
+      <main id="weekly-grid"></main>
+    </div>
+
+    <!-- Fitness Detail Modal -->
+    <div id="modal-overlay" class="overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-header-text">
+            <h2 id="modal-title"></h2>
+            <p class="modal-sub" id="modal-subtitle"></p>
+          </div>
+          <button id="modal-close" class="close-btn" aria-label="Kapat">✕</button>
+        </div>
+        <div id="exercises-container"></div>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-overlay" class="overlay">
+      <div class="modal-content settings-modal">
+        <div class="modal-header">
+          <div class="modal-header-text">
+            <h2>⚙️ Ayarlar</h2>
+            <p class="modal-sub">API Anahtarı & Veri Yönetimi</p>
+          </div>
+          <button id="settings-close" class="close-btn" aria-label="Kapat">✕</button>
+        </div>
+        <div class="settings-body">
+          <div class="setting-group">
+            <label class="setting-label" for="api-key-input">Gemini API Anahtarı</label>
+            <p class="setting-hint">Google AI Studio'dan alınan API anahtarınızı girin. Anahtar sadece tarayıcınızda
+              şifreli olarak saklanır.</p>
+            <div class="api-key-row">
+              <input type="password" id="api-key-input" class="edit-input" placeholder="AIza..." autocomplete="off" />
+              <button id="toggle-key-vis" class="icon-btn small" title="Göster/Gizle"
+                onclick="toggleKeyVisibility()">👁️</button>
+            </div>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Şifre Değiştir</label>
+            <input type="password" id="change-old-pass" class="edit-input" placeholder="Mevcut şifre" autocomplete="off"
+              style="margin-bottom:8px" />
+            <input type="password" id="change-new-pass" class="edit-input" placeholder="Yeni şifre"
+              autocomplete="off" />
+          </div>
+          <div class="settings-actions">
+            <button id="settings-save" class="btn btn-primary">💾 Kaydet</button>
+            <button id="change-pass-btn" class="btn btn-secondary">🔑 Şifre Değiştir</button>
+            <button id="settings-reset" class="btn btn-danger">🔄 Verileri Sıfırla</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day Edit Modal -->
+    <div id="edit-overlay" class="overlay">
+      <div class="modal-content edit-modal">
+        <div class="modal-header">
+          <div class="modal-header-text">
+            <h2 id="edit-day-title"></h2>
+          </div>
+          <button id="edit-close" class="close-btn" aria-label="Kapat">✕</button>
+        </div>
+        <div class="edit-body">
+          <div class="edit-group">
+            <label class="setting-label">Antrenman Türü</label>
+            <select id="edit-workout-type" class="edit-input edit-select">
+              <option value="fitness">🏋️ Fitness</option>
+              <option value="swimming">🏊 Yüzme</option>
+              <option value="running">🏃 Koşu</option>
+              <option value="rest">😴 Dinlenme</option>
+            </select>
+          </div>
+          <div class="edit-group" id="fitness-day-group">
+            <label class="setting-label">Fitness Gün Numarası</label>
+            <select id="edit-fitness-day" class="edit-input edit-select">
+              <option value="1">1. Gün</option>
+              <option value="2">2. Gün</option>
+              <option value="3">3. Gün</option>
+            </select>
+          </div>
+          <div class="edit-group">
+            <label class="setting-label">Antrenman Saati</label>
+            <input type="text" id="edit-workout-time" class="edit-input" placeholder="17:00 - 18:30" />
+          </div>
+          <div class="edit-group">
+            <div class="edit-group-header">
+              <label class="setting-label">Dersler</label>
+              <button id="add-class-btn" class="btn btn-small btn-secondary">+ Ders Ekle</button>
+            </div>
+            <div id="edit-classes-list"></div>
+          </div>
+          <div class="edit-actions">
+            <button id="edit-save" class="btn btn-primary">💾 Kaydet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Chat Panel -->
+    <button id="chat-fab" class="chat-fab" title="AI Asistan">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 8V4H8" />
+        <rect width="16" height="12" x="4" y="8" rx="2" />
+        <path d="m2 14 6-6 6 6" />
+        <path d="m14 14 4-4 4 4" />
+      </svg>
+      <span class="fab-label">AI</span>
+    </button>
+
+    <div id="chat-panel" class="chat-panel">
+      <div class="chat-header">
+        <div class="chat-header-text">
+          <span class="chat-header-icon">🤖</span>
+          <span>Gemini Asistan</span>
+        </div>
+        <button id="chat-close" class="close-btn small">✕</button>
+      </div>
+      <div id="chat-messages" class="chat-messages">
+        <div class="chat-bubble ai welcome">
+          Merhaba! Programını güncellemek, ders eklemek veya antrenman planını değiştirmek istersen bana yaz. 🏋️📚
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <textarea id="chat-input" class="chat-input" placeholder="Örn: Salı'ya Matematik 09:00-11:00 ekle..."
+          rows="1"></textarea>
+        <button id="chat-send" class="chat-send-btn" title="Gönder">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="storage.js"></script>
+  <script src="auth.js"></script>
+  <script src="gemini.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function toggleKeyVisibility() {
+      const input = document.getElementById('api-key-input');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+  </script>
+</body>
+
+</html>
