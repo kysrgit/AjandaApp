@@ -65,14 +65,12 @@ function initLockScreen() {
         // İlk kez — şifre oluşturma modu
         document.getElementById('lock-title').textContent = '🔐 Şifre Oluştur';
         document.getElementById('lock-subtitle').textContent = 'Ajandanı korumak için bir şifre belirle';
-        document.getElementById('lock-confirm-group').classList.remove('hidden');
         document.getElementById('lock-btn').textContent = 'Şifreyi Kaydet & Giriş Yap';
         document.getElementById('lock-btn').onclick = handleSetPassword;
     } else {
         // Giriş modu
         document.getElementById('lock-title').textContent = '🔒 Giriş Yap';
         document.getElementById('lock-subtitle').textContent = 'Ajandana erişmek için şifreni gir';
-        document.getElementById('lock-confirm-group').classList.add('hidden');
         document.getElementById('lock-btn').textContent = 'Giriş Yap';
         document.getElementById('lock-btn').onclick = handleLogin;
     }
@@ -84,23 +82,13 @@ function initLockScreen() {
     document.getElementById('lock-password').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') document.getElementById('lock-btn').click();
     });
-
-    document.getElementById('lock-confirm').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') document.getElementById('lock-btn').click();
-    });
 }
 
 async function handleSetPassword() {
     const pass = document.getElementById('lock-password').value;
-    const confirm = document.getElementById('lock-confirm').value;
 
     if (pass.length < 4) {
         showLockError('Şifre en az 4 karakter olmalı');
-        return;
-    }
-
-    if (pass !== confirm) {
-        showLockError('Şifreler eşleşmiyor');
         return;
     }
 

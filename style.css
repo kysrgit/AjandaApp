@@ -534,43 +534,37 @@ body::before {
   padding: 16px;
 }
 
-.exercise-image-placeholder,
-.alt-image-placeholder {
+.exercise-image-wrapper,
+.alt-image-wrapper {
   flex-shrink: 0;
   border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--bg-surface), rgba(59, 130, 246, 0.08));
-  border: 1px dashed rgba(148, 163, 184, 0.2);
+  background: var(--bg-surface);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.exercise-image-placeholder {
+.exercise-image-wrapper {
   width: 100px;
   height: 100px;
 }
 
-.alt-image-placeholder {
+.alt-image-wrapper {
   width: 72px;
   height: 72px;
 }
 
-.placeholder-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: var(--text-muted);
+.exercise-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.placeholder-content span {
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.placeholder-content.small span {
-  font-size: 0.55rem;
+.exercise-card:hover .exercise-img {
+  transform: scale(1.05);
 }
 
 .exercise-details {

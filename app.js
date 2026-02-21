@@ -159,17 +159,27 @@ function closeFitnessModal() {
   document.body.style.overflow = '';
 }
 
+function getExerciseImage(group) {
+  const g = group.toLowerCase();
+  if (g.includes('göğüs') || g.includes('arka kol')) return 'assets/images/chest_workout.png';
+  if (g.includes('sırt') || g.includes('ön kol')) return 'assets/images/back_workout.png';
+  if (g.includes('omuz')) return 'assets/images/shoulders_workout.png';
+  if (g.includes('karın') || g.includes('core')) return 'assets/images/core_workout.png';
+  if (g.includes('bacak') || g.includes('kalça')) return 'assets/images/legs_workout.png';
+  return 'assets/images/chest_workout.png'; // default
+}
+
 function createExerciseCard(exercise, index) {
   const card = document.createElement('div');
+  const mainImg = getExerciseImage(exercise.muscleGroup);
+  const altImg = getExerciseImage(exercise.alternative.muscleGroup);
+
   card.className = 'exercise-card';
   card.style.animationDelay = `${index * 0.07}s`;
   card.innerHTML = `
     <div class="exercise-main">
-      <div class="exercise-image-placeholder">
-        <div class="placeholder-content">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Egzersiz Görseli</span>
-        </div>
+      <div class="exercise-image-wrapper">
+        <img src="${mainImg}" alt="${exercise.name}" class="exercise-img" />
       </div>
       <div class="exercise-details">
         <h3 class="exercise-name">${exercise.name}</h3>
@@ -191,16 +201,15 @@ function createExerciseCard(exercise, index) {
     </button>
     <div class="alternative-section">
       <div class="alt-inner">
-        <div class="alt-image-placeholder">
-          <div class="placeholder-content small">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Görsel</span>
-          </div>
+        <div class="alt-image-wrapper">
+           <img src="${altImg}" alt="${exercise.alternative.name}" class="exercise-img small" />
         </div>
         <div class="alt-details">
-          <span class="alt-label">Alternatif:</span>
           <h4 class="alt-name">${exercise.alternative.name}</h4>
-          <span class="alt-muscle">${exercise.alternative.muscleGroup}</span>
+          <span class="meta-chip muscle-chip small">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            ${exercise.alternative.muscleGroup}
+          </span>
         </div>
       </div>
     </div>
