@@ -2,7 +2,7 @@
 // Gemini AI Entegrasyonu
 // ==========================================
 
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = 'gemini-3-flash-preview';
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 const SYSTEM_PROMPT = `Sen bir kişisel ajanda asistanısın. Kullanıcının haftalık ders programını ve antrenman takvimini yönetiyorsun.
