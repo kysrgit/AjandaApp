@@ -774,6 +774,7 @@ body::before {
 
 .edit-input:focus {
   border-color: var(--fitness-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .edit-input::placeholder {
@@ -1087,6 +1088,7 @@ body::before {
 
 .chat-input:focus {
   border-color: var(--fitness-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .chat-input::placeholder {
