@@ -52,6 +52,7 @@ function renderWeeklyGrid() {
     editBtn.className = 'day-edit-btn';
     editBtn.innerHTML = '✏️';
     editBtn.title = 'Düzenle';
+    editBtn.setAttribute('aria-label', `${dayData.day} gününü düzenle`);
     editBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       openEditModal(index);
@@ -173,6 +174,7 @@ function createExerciseCard(exercise, index) {
   const card = document.createElement('div');
   const mainImg = getExerciseImage(exercise.muscleGroup);
   const altImg = getExerciseImage(exercise.alternative.muscleGroup);
+  const altId = 'alt-section-' + index;
 
   card.className = 'exercise-card';
   card.style.animationDelay = `${index * 0.07}s`;
@@ -195,11 +197,11 @@ function createExerciseCard(exercise, index) {
         </div>
       </div>
     </div>
-    <button class="alt-toggle" onclick="toggleAlternative(this)">
+    <button class="alt-toggle" onclick="toggleAlternative(this)" aria-expanded="false" aria-controls="${altId}">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
       Alternatif Egzersiz
     </button>
-    <div class="alternative-section">
+    <div class="alternative-section" id="${altId}">
       <div class="alt-inner">
         <div class="alt-image-wrapper">
            <img src="${altImg}" alt="${exercise.alternative.name}" class="exercise-img small" />
@@ -223,11 +225,14 @@ function toggleAlternative(btn) {
   const isOpen = section.classList.contains('open');
   document.querySelectorAll('.alternative-section.open').forEach(s => {
     s.classList.remove('open');
-    s.closest('.exercise-card').querySelector('.alt-toggle').classList.remove('active');
+    const toggle = s.closest('.exercise-card').querySelector('.alt-toggle');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
   });
   if (!isOpen) {
     section.classList.add('open');
     btn.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
   }
 }
 
@@ -350,6 +355,7 @@ function openEditModal(dayIndex) {
 
   document.getElementById('edit-overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('edit-workout-type').focus(), 150);
 }
 
 function closeEditModal() {
