@@ -67,6 +67,12 @@ body::before {
   z-index: 0;
 }
 
+/* ---------- Focus States ---------- */
+*:focus-visible {
+  outline: 2px solid var(--fitness-color);
+  outline-offset: 2px;
+}
+
 /* ---------- Layout ---------- */
 .app-wrapper {
   position: relative;
@@ -355,10 +361,13 @@ body::before {
   cursor: pointer;
 }
 
-.workout-badge.clickable:hover {
+.workout-badge.clickable:hover,
+.workout-badge.clickable:focus-visible {
   transform: scale(1.02);
   box-shadow: 0 0 16px var(--accent-bg);
   filter: brightness(1.15);
+  outline: 2px solid var(--fitness-color);
+  outline-offset: 2px;
 }
 
 .workout-icon {
@@ -397,7 +406,8 @@ body::before {
   transition: transform 0.2s;
 }
 
-.workout-badge.clickable:hover .workout-arrow {
+.workout-badge.clickable:hover .workout-arrow,
+.workout-badge.clickable:focus-visible .workout-arrow {
   transform: translateX(3px);
 }
 
