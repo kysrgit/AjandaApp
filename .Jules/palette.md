@@ -1,0 +1,3 @@
+## 2024-05-18 - [Inaccessible custom buttons]
+**Learning:** Found custom `div` elements acting as buttons (workout badges) that were inaccessible via keyboard. They lacked proper ARIA roles, tabindex, and keyboard event handlers.
+**Action:** Always ensure that non-semantic interactive elements are given `role="button"`, `tabindex="0"`, and `keydown` event listeners for `Enter` and `Space` keys to maintain keyboard accessibility, and consider using native `<button>` elements instead if possible.
