@@ -1401,3 +1401,11 @@ body::before {
 .settings-actions {
   flex-wrap: wrap;
 }
+
+/* ==========================================
+   Accessibility
+   ========================================== */
+:focus-visible {
+  outline: 2px solid var(--fitness-color);
+  outline-offset: 2px;
+}
