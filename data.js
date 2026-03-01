@@ -204,3 +204,16 @@ const DEFAULT_FITNESS_PROGRAMS = {
     ]
   }
 };
+
+// ==========================================
+// Egzersiz Resim Eşleştirmeleri
+// ==========================================
+const EXERCISE_IMAGE_MAPPING = [
+  { keywords: ['göğüs', 'arka kol'], image: 'assets/images/chest_workout.png' },
+  { keywords: ['sırt', 'ön kol'], image: 'assets/images/back_workout.png' },
+  { keywords: ['omuz'], image: 'assets/images/shoulders_workout.png' },
+  { keywords: ['karın', 'core'], image: 'assets/images/core_workout.png' },
+  { keywords: ['bacak', 'kalça'], image: 'assets/images/legs_workout.png' }
+];
+
+const DEFAULT_EXERCISE_IMAGE = 'assets/images/chest_workout.png';

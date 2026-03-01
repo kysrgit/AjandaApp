@@ -160,13 +160,11 @@ function closeFitnessModal() {
 }
 
 function getExerciseImage(group) {
-  const g = group.toLowerCase();
-  if (g.includes('göğüs') || g.includes('arka kol')) return 'assets/images/chest_workout.png';
-  if (g.includes('sırt') || g.includes('ön kol')) return 'assets/images/back_workout.png';
-  if (g.includes('omuz')) return 'assets/images/shoulders_workout.png';
-  if (g.includes('karın') || g.includes('core')) return 'assets/images/core_workout.png';
-  if (g.includes('bacak') || g.includes('kalça')) return 'assets/images/legs_workout.png';
-  return 'assets/images/chest_workout.png'; // default
+  const g = (group || '').toLowerCase();
+  const match = EXERCISE_IMAGE_MAPPING.find(entry =>
+    entry.keywords.some(kw => g.includes(kw))
+  );
+  return match ? match.image : DEFAULT_EXERCISE_IMAGE;
 }
 
 function createExerciseCard(exercise, index) {
