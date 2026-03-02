@@ -8,32 +8,36 @@ const STORAGE_KEYS = {
     apiKey: 'ajanda_gemini_api_key'
 };
 
-// ---------- Schedule ----------
-function getSchedule() {
-    const stored = localStorage.getItem(STORAGE_KEYS.schedule);
+// ---------- Helpers ----------
+function getFromStorage(key, defaultVal) {
+    const stored = localStorage.getItem(key);
     if (stored) {
         try { return JSON.parse(stored); }
         catch { /* fallthrough */ }
     }
-    return JSON.parse(JSON.stringify(DEFAULT_WEEKLY_SCHEDULE));
+    return JSON.parse(JSON.stringify(defaultVal));
+}
+
+function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+// ---------- Schedule ----------
+function getSchedule() {
+    return getFromStorage(STORAGE_KEYS.schedule, DEFAULT_WEEKLY_SCHEDULE);
 }
 
 function saveSchedule(schedule) {
-    localStorage.setItem(STORAGE_KEYS.schedule, JSON.stringify(schedule));
+    saveToStorage(STORAGE_KEYS.schedule, schedule);
 }
 
 // ---------- Fitness Programs ----------
 function getFitnessPrograms() {
-    const stored = localStorage.getItem(STORAGE_KEYS.fitness);
-    if (stored) {
-        try { return JSON.parse(stored); }
-        catch { /* fallthrough */ }
-    }
-    return JSON.parse(JSON.stringify(DEFAULT_FITNESS_PROGRAMS));
+    return getFromStorage(STORAGE_KEYS.fitness, DEFAULT_FITNESS_PROGRAMS);
 }
 
 function saveFitnessPrograms(programs) {
-    localStorage.setItem(STORAGE_KEYS.fitness, JSON.stringify(programs));
+    saveToStorage(STORAGE_KEYS.fitness, programs);
 }
 
 // ---------- API Key ----------
