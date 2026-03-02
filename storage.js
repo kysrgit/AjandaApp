@@ -15,7 +15,7 @@ function getSchedule() {
         try { return JSON.parse(stored); }
         catch { /* fallthrough */ }
     }
-    return JSON.parse(JSON.stringify(DEFAULT_WEEKLY_SCHEDULE));
+    return structuredClone(DEFAULT_WEEKLY_SCHEDULE);
 }
 
 function saveSchedule(schedule) {
@@ -29,7 +29,7 @@ function getFitnessPrograms() {
         try { return JSON.parse(stored); }
         catch { /* fallthrough */ }
     }
-    return JSON.parse(JSON.stringify(DEFAULT_FITNESS_PROGRAMS));
+    return structuredClone(DEFAULT_FITNESS_PROGRAMS);
 }
 
 function saveFitnessPrograms(programs) {
