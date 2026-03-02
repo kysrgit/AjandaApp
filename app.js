@@ -119,8 +119,8 @@ function renderWeeklyGrid() {
   });
 }
 
-function isTodayIndex(index) {
-  const jsDay = new Date().getDay();
+function isTodayIndex(index, date = new Date()) {
+  const jsDay = date.getDay();
   const mondayFirst = jsDay === 0 ? 6 : jsDay - 1;
   return mondayFirst === index;
 }
@@ -534,4 +534,8 @@ function closeAllModals() {
   closeFitnessModal();
   closeSettingsModal();
   closeEditModal();
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { isTodayIndex };
 }
