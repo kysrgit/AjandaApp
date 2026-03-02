@@ -50,3 +50,16 @@ function resetAllData() {
     localStorage.removeItem(STORAGE_KEYS.schedule);
     localStorage.removeItem(STORAGE_KEYS.fitness);
 }
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        STORAGE_KEYS,
+        getSchedule,
+        saveSchedule,
+        getFitnessPrograms,
+        saveFitnessPrograms,
+        getApiKey,
+        saveApiKey,
+        resetAllData
+    };
+}
