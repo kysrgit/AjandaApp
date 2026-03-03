@@ -1,0 +1,3 @@
+## 2024-05-18 - Keyboard Accessibility for Non-Semantic Interactive Elements
+**Learning:** Adding `.clickable` classes to `div` elements (like `.workout-badge.clickable`) handles mouse interactions but completely fails for keyboard users. They lack inherent focusability and semantics, making them invisible and unusable to screen readers or users navigating via keyboard.
+**Action:** Whenever a non-semantic element (like a `div` or `span`) is made interactive, it is crucial to explicitly add `role="button"`, `tabindex="0"`, and a `keydown` event listener for 'Enter' and 'Space' keys to ensure full accessibility.
