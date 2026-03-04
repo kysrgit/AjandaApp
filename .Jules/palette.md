@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Div Accessibility
+**Learning:** Custom interactive elements using non-semantic tags (like `.workout-badge.clickable` `div`s) inherently lack keyboard accessibility. Even with a `click` listener, screen reader users and keyboard navigators cannot activate them.
+**Action:** When creating custom interactive elements without native HTML semantic tags (like `<button>`), ensure full accessibility by adding `role="button"`, `tabindex="0"`, and `keydown` event listeners for the `Enter` and `Space` keys (including `e.preventDefault()` on Space to prevent page scrolling).
