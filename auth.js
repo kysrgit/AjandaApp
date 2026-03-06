@@ -3,11 +3,12 @@
 // ==========================================
 
 const LOCK_STORAGE_KEY = 'ajanda_lock_hash';
+const SALT_STORAGE_KEY = 'ajanda_lock_salt';
 
 // SHA-256 hash fonksiyonu
-async function hashPassword(password) {
+async function hashPassword(password, salt) {
     const encoder = new TextEncoder();
-    const data = encoder.encode(password + '_ajanda_salt_2024');
+    const data = encoder.encode(password + salt);
     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
@@ -20,16 +21,38 @@ function hasStoredPassword() {
 
 // Şifre doğrulama
 async function verifyPassword(password) {
-    const stored = localStorage.getItem(LOCK_STORAGE_KEY);
-    if (!stored) return false;
-    const hash = await hashPassword(password);
-    return hash === stored;
+    const storedHash = localStorage.getItem(LOCK_STORAGE_KEY);
+    if (!storedHash) return false;
+
+    const storedSalt = localStorage.getItem(SALT_STORAGE_KEY);
+
+    if (storedSalt) {
+        // Modern doğrulama (rastgele salt ile)
+        const hash = await hashPassword(password, storedSalt);
+        return hash === storedHash;
+    } else {
+        // Eski doğrulama (sabit salt ile)
+        const legacySalt = '_ajanda_salt_2024';
+        const hash = await hashPassword(password, legacySalt);
+        if (hash === storedHash) {
+            // Başarılı giriş sonrası otomatik göç (migration)
+            await setPassword(password);
+            return true;
+        }
+        return false;
+    }
 }
 
 // Yeni şifre kaydet
 async function setPassword(password) {
-    const hash = await hashPassword(password);
+    // 16 byte rastgele salt oluştur
+    const saltArray = new Uint8Array(16);
+    crypto.getRandomValues(saltArray);
+    const salt = Array.from(saltArray).map(b => b.toString(16).padStart(2, '0')).join('');
+
+    const hash = await hashPassword(password, salt);
     localStorage.setItem(LOCK_STORAGE_KEY, hash);
+    localStorage.setItem(SALT_STORAGE_KEY, salt);
 }
 
 // Şifre değiştir
