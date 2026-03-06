@@ -204,3 +204,11 @@ const DEFAULT_FITNESS_PROGRAMS = {
     ]
   }
 };
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    WORKOUT_TYPES,
+    DEFAULT_WEEKLY_SCHEDULE,
+    DEFAULT_FITNESS_PROGRAMS
+  };
+}
