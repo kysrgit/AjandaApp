@@ -149,7 +149,12 @@ function openFitnessModal(dayNum) {
   document.getElementById('modal-subtitle').textContent = `${program.subtitle} — Fitness Programı`;
   const container = document.getElementById('exercises-container');
   container.innerHTML = '';
-  program.exercises.forEach((ex, i) => container.appendChild(createExerciseCard(ex, i)));
+
+  // Optimization: Use DocumentFragment to batch DOM appends and minimize layout thrashing
+  const fragment = document.createDocumentFragment();
+  program.exercises.forEach((ex, i) => fragment.appendChild(createExerciseCard(ex, i)));
+  container.appendChild(fragment);
+
   document.getElementById('modal-overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
