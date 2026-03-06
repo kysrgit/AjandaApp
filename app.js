@@ -37,6 +37,8 @@ function renderWeeklyGrid() {
   const grid = document.getElementById('weekly-grid');
   grid.innerHTML = '';
 
+  const fragment = document.createDocumentFragment();
+
   WEEKLY_SCHEDULE.forEach((dayData, index) => {
     const wt = WORKOUT_TYPES[dayData.workout] || WORKOUT_TYPES.rest;
     const isToday = isTodayIndex(index);
@@ -115,8 +117,10 @@ function renderWeeklyGrid() {
     }
 
     card.appendChild(workoutBadge);
-    grid.appendChild(card);
+    fragment.appendChild(card);
   });
+
+  grid.appendChild(fragment);
 }
 
 function isTodayIndex(index) {
