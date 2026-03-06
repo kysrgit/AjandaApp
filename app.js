@@ -37,9 +37,16 @@ function renderWeeklyGrid() {
   const grid = document.getElementById('weekly-grid');
   grid.innerHTML = '';
 
+  // Calculate today index once to avoid redundant Date instantiations in the loop
+  const jsDay = new Date().getDay();
+  const todayIndex = jsDay === 0 ? 6 : jsDay - 1;
+
+  // Use a DocumentFragment to batch DOM append operations and prevent layout thrashing
+  const fragment = document.createDocumentFragment();
+
   WEEKLY_SCHEDULE.forEach((dayData, index) => {
     const wt = WORKOUT_TYPES[dayData.workout] || WORKOUT_TYPES.rest;
-    const isToday = isTodayIndex(index);
+    const isToday = (todayIndex === index);
 
     const card = document.createElement('div');
     card.className = `day-card ${isToday ? 'today' : ''}`;
@@ -115,14 +122,11 @@ function renderWeeklyGrid() {
     }
 
     card.appendChild(workoutBadge);
-    grid.appendChild(card);
+    fragment.appendChild(card);
   });
-}
 
-function isTodayIndex(index) {
-  const jsDay = new Date().getDay();
-  const mondayFirst = jsDay === 0 ? 6 : jsDay - 1;
-  return mondayFirst === index;
+  // Append all cards at once
+  grid.appendChild(fragment);
 }
 
 function refreshApp() {

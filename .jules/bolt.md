@@ -1,0 +1,3 @@
+## 2024-05-18 - Optimize DOM Construction Loops in Vanilla JS
+**Learning:** Instantiating expensive objects like `new Date()` within iterations of sequential DOM construction loops (such as rendering daily cards in `renderWeeklyGrid`) severely degrades performance and causes redundant allocations. Furthermore, immediately appending elements to the DOM at every loop iteration results in unnecessary layout thrashing.
+**Action:** When working on DOM construction loops in vanilla JS, always hoist expensive object instantiations outside of loops and use `DocumentFragment` to batch sequential DOM mutations before appending them to the live document layout in a single operation.
