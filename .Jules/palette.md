@@ -1,0 +1,3 @@
+## 2026-03-07 - Keyboard Accessibility for Custom Interactive Elements
+**Learning:** Custom interactive elements (like `div` tags acting as buttons, e.g., `.workout-badge.clickable`) in this app often lack keyboard accessibility. Users rely on keyboard navigation, and custom UI components that aren't native interactive elements break this expected flow.
+**Action:** When creating or modifying custom interactive elements, always ensure they are fully keyboard accessible. This requires setting `role="button"`, `tabindex="0"`, and adding a `keydown` event listener for `Enter` and `Space` keys, including `e.preventDefault()` to stop page scrolling on `Space`.
