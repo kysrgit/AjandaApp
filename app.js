@@ -111,7 +111,15 @@ function renderWeeklyGrid() {
 
     if (clickable) {
       workoutBadge.classList.add('clickable');
+      workoutBadge.setAttribute('role', 'button');
+      workoutBadge.setAttribute('tabindex', '0');
       workoutBadge.addEventListener('click', () => openFitnessModal(dayData.fitnessDay));
+      workoutBadge.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === ' ') e.preventDefault(); // Prevent page scroll on Space
+          openFitnessModal(dayData.fitnessDay);
+        }
+      });
     }
 
     card.appendChild(workoutBadge);
