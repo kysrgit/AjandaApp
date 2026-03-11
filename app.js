@@ -52,6 +52,7 @@ function renderWeeklyGrid() {
     editBtn.className = 'day-edit-btn';
     editBtn.innerHTML = '✏️';
     editBtn.title = 'Düzenle';
+    editBtn.setAttribute('aria-label', 'Düzenle');
     editBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       openEditModal(index);
@@ -111,7 +112,15 @@ function renderWeeklyGrid() {
 
     if (clickable) {
       workoutBadge.classList.add('clickable');
+      workoutBadge.setAttribute('role', 'button');
+      workoutBadge.setAttribute('tabindex', '0');
       workoutBadge.addEventListener('click', () => openFitnessModal(dayData.fitnessDay));
+      workoutBadge.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === ' ') e.preventDefault();
+          openFitnessModal(dayData.fitnessDay);
+        }
+      });
     }
 
     card.appendChild(workoutBadge);
