@@ -1,0 +1,3 @@
+## 2026-03-17 - Keyboard Accessibility of Custom Interactive Elements
+**Learning:** Custom interactive div elements in this app (like the `.workout-badge.clickable`) lack native keyboard support and ARIA roles, leading to poor accessibility for keyboard users. Adding a global focus state `*:focus-visible` with a CSS variable highlights these issues.
+**Action:** Ensure that all future custom interactive components built with non-semantic tags in this application implement `role="button"`, `tabindex="0"`, and keydown event listeners (`Enter` and `Space` with `e.preventDefault()`) for full keyboard accessibility.
