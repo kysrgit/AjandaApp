@@ -1,0 +1,3 @@
+## 2024-03-18 - Non-Semantic Interactive Elements Lack Keyboard Support
+**Learning:** In this application, custom interactive elements (like the `.workout-badge.clickable` which uses a `div` tag) are frequently used for navigation or actions but naturally lack native keyboard support (focusability and keydown event handling).
+**Action:** When creating or modifying non-semantic interactive tags (e.g., `div`, `span`) to behave like buttons, always ensure to manually add `role="button"`, `tabindex="0"`, and `keydown` event listeners for the `Enter` and `Space` keys (including `e.preventDefault()` for Space to prevent page scroll) to ensure proper keyboard accessibility.
