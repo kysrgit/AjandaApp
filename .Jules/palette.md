@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Elements Accessibility
+**Learning:** Custom interactive elements using non-semantic tags (e.g., `div` tags like `.workout-badge.clickable`) lack native keyboard support.
+**Action:** Always implement keyboard accessibility by adding `role="button"`, `tabindex="0"`, and `keydown` event listeners for the `Enter` and `Space` keys (including `e.preventDefault()` for `Space` to prevent page scrolling) to ensure they function like native buttons for keyboard and screen reader users.
