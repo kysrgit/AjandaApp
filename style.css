@@ -67,6 +67,11 @@ body::before {
   z-index: 0;
 }
 
+*:focus-visible {
+  outline: 2px solid var(--fitness-color);
+  outline-offset: 2px;
+}
+
 /* ---------- Layout ---------- */
 .app-wrapper {
   position: relative;
