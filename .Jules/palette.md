@@ -1,0 +1,3 @@
+## 2024-03-22 - Keyboard accessibility on custom interactive elements
+**Learning:** In vanilla JS applications, creating custom interactive elements (like `.workout-badge.clickable` made from `div`s instead of native `<button>`s) completely breaks keyboard accessibility by default. Users navigating via keyboard cannot focus or activate these elements.
+**Action:** Always add `role="button"`, `tabindex="0"`, and `keydown` event listeners (`Enter` and `Space`, calling `e.preventDefault()` on space to prevent scrolling) to any non-semantic interactive element to ensure full keyboard navigability and activation, matching native `<button>` behavior.
