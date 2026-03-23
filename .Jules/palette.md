@@ -1,0 +1,3 @@
+## 2026-03-23 - Custom Interactive Elements Keyboard Accessibility
+**Learning:** Non-semantic HTML elements (like `div.workout-badge.clickable`) acting as buttons require explicit implementations of `role="button"`, `tabindex="0"`, and `keydown` event handlers (for Enter/Space keys, with Space scrolling prevention) to be fully accessible to keyboard and screen reader users. In addition, global `*:focus-visible` styling is necessary when custom components don't inherit browser-default outlines.
+**Action:** When converting static `div` or `span` elements into clickable elements in this vanilla application, always add the trinity of accessibility features (role, tabindex, keydown) or consider refactoring to use semantic `<button>` tags instead.
