@@ -1,0 +1,3 @@
+## 2024-10-24 - Interactive non-semantic elements missing keyboard access
+**Learning:** This app heavily uses non-semantic HTML tags (`div` like `.workout-badge.clickable`) for critical interactive elements like opening modals, which breaks keyboard navigation natively.
+**Action:** When adding interactive logic to custom cards/badges in this app, explicitly set `role="button"`, `tabindex="0"`, and map `Enter`/`Space` (with `e.preventDefault()`) in the click listener scope, along with visible focus states.
