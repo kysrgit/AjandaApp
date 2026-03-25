@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Div Accessibility
+**Learning:** Custom interactive elements using non-semantic tags (e.g., `div` tags like `.workout-badge.clickable`) need explicit ARIA roles, tabindex, and keyboard event handlers to be accessible. Users expect spacebar and enter to activate custom buttons, and spacebar to NOT scroll the page.
+**Action:** When creating custom buttons out of non-semantic elements, always add `role="button"`, `tabindex="0"`, and a `keydown` event listener for 'Enter' and 'Space' (including `e.preventDefault()` for Space).
