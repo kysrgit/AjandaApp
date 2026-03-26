@@ -1,0 +1,3 @@
+## 2026-03-26 - Interactive elements with non-semantic tags
+**Learning:** Custom interactive elements using non-semantic tags (like `div` tags acting as buttons) often miss built-in keyboard accessibility (focus states, 'Enter'/'Space' activation, ARIA roles), making them unusable for keyboard and screen reader users.
+**Action:** When implementing custom interactive elements using non-semantic tags, always ensure they are given `role="button"`, `tabindex="0"`, explicit keydown listeners for 'Enter' and 'Space' (with `e.preventDefault()` on Space), and an explicit `focus-visible` CSS outline state.
