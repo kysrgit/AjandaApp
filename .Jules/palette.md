@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Elements using div tags need keyboard support
+**Learning:** Custom interactive elements like `.workout-badge.clickable` using non-semantic tags (e.g. `div`) must implement keyboard accessibility. Adding `role="button"` and `tabindex="0"` allows users to tab to them, but `keydown` events for `Enter` and `Space` must be manually wired to trigger their interactions. Crucially, preventing default behavior on `Space` (`e.preventDefault()`) is necessary to stop the page from scrolling when pressed.
+**Action:** Always verify keyboard accessibility on non-semantic interactive components, ensuring `tabindex`, roles, and both mouse and keyboard event listeners are correctly implemented.
