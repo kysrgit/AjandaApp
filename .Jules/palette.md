@@ -1,0 +1,3 @@
+## 2024-10-25 - Accessibility of non-semantic interactive tags
+**Learning:** In this application, custom interactive elements (like the `.workout-badge.clickable` cards) are built using non-semantic `div` tags instead of native buttons or links. While this allows for complex layout and styling, it breaks native keyboard accessibility and screen reader support out of the box.
+**Action:** When making non-semantic tags interactive, always explicitly add `role="button"`, `tabindex="0"`, and a `keydown` event listener to handle `Enter` and `Space` key activations. Furthermore, ensure `e.preventDefault()` is called for the Space key to prevent the browser from unintentionally scrolling the page down.
