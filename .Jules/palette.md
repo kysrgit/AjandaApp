@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Interactive Element Accessibility
+**Learning:** In this application, custom interactive elements built with non-semantic tags (like `<div class="workout-badge clickable">`) lack built-in keyboard accessibility, meaning they cannot be focused via tab or activated via keyboard out-of-the-box.
+**Action:** When creating or modifying custom interactive elements (e.g., `div` or `span` used as buttons), explicitly add `role="button"`, `tabindex="0"`, and `keydown` event listeners for the `Enter` and `Space` keys (including `e.preventDefault()` for `Space` to prevent page scrolling) to ensure they are accessible to keyboard users. Additionally, ensure a global `*:focus-visible` outline is set so focus is visually apparent.
