@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive Div Accessibility
+**Learning:** Custom interactive elements using non-semantic tags (e.g., `div` tags like `.workout-badge.clickable`) must implement keyboard accessibility by adding `role="button"`, `tabindex="0"`, and `keydown` event listeners for the `Enter` and `Space` keys, including `e.preventDefault()` to stop the page from scrolling when pressing space. This is a critical pattern in this vanilla JS app since semantic `<button>` tags aren't always used for complex clickable layouts.
+**Action:** When adding or auditing complex clickable components built with `div` or `span`, always verify that keyboard accessibility properties (`role`, `tabindex`, and `keydown` listeners handling `Enter`/`Space`) are included to support non-mouse users.
