@@ -1,0 +1,3 @@
+## 2024-05-18 - Keyboard Accessibility for Non-Semantic Interactive Elements
+**Learning:** This application uses custom non-semantic HTML tags (like `div` tags such as `.workout-badge.clickable`) as interactive elements, which natively lack keyboard support. This pattern breaks accessibility for keyboard and screen-reader users.
+**Action:** When making custom non-semantic elements interactive, always ensure they are fully accessible by adding `role="button"`, `tabindex="0"`, and implementing keyboard event handlers (for `Enter` and `Space` keys, including `e.preventDefault()` to stop page scrolling).
