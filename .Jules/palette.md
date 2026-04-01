@@ -1,0 +1,3 @@
+## 2026-04-01 - Keyboard Accessibility for Non-Semantic Interactive Elements
+**Learning:** Custom interactive elements using non-semantic tags (like `div` tags for `.workout-badge.clickable`) lack native keyboard support, which breaks accessibility for screen reader and keyboard-only users. Also, a global focus indicator is missing.
+**Action:** When creating custom buttons with non-semantic tags, always implement keyboard accessibility by adding `role="button"`, `tabindex="0"`, and `keydown` event listeners for the `Enter` and `Space` keys (including `e.preventDefault()` for `Space`). Ensure a global `*:focus-visible` rule is present to highlight focused elements.
