@@ -1,0 +1,3 @@
+## 2024-05-24 - Keyboard Accessibility for Non-Semantic Interactive Elements
+**Learning:** Discovered an accessibility issue pattern where custom interactive elements in the application (such as `.workout-badge.clickable`) use non-semantic `div` tags without native keyboard accessibility. This prevents screen reader and keyboard-only users from interacting with important elements like fitness modals.
+**Action:** Apply a reusable UX pattern by adding `role="button"`, `tabindex="0"`, and `keydown` event handlers (for Space and Enter keys, including `e.preventDefault()` to stop page scroll) to all interactive non-semantic elements to mimic native button accessibility.
