@@ -111,7 +111,17 @@ function renderWeeklyGrid() {
 
     if (clickable) {
       workoutBadge.classList.add('clickable');
-      workoutBadge.addEventListener('click', () => openFitnessModal(dayData.fitnessDay));
+      workoutBadge.setAttribute('role', 'button');
+      workoutBadge.setAttribute('tabindex', '0');
+
+      const triggerModal = () => openFitnessModal(dayData.fitnessDay);
+      workoutBadge.addEventListener('click', triggerModal);
+      workoutBadge.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          triggerModal();
+        }
+      });
     }
 
     card.appendChild(workoutBadge);
