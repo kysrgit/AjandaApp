@@ -1,0 +1,3 @@
+## 2024-05-24 - Interactive non-semantic tags require keyboard accessibility
+**Learning:** In this application, custom interactive elements (like `.workout-badge.clickable`) use non-semantic `div` tags. These elements need keyboard accessibility implemented explicitly.
+**Action:** When adding interactivity to non-semantic elements, always add `role="button"`, `tabindex="0"`, and `keydown` event handlers for `Enter` and `Space` keys (including `e.preventDefault()` for `Space` to avoid page scrolling) to ensure they are fully accessible via keyboard navigation.
