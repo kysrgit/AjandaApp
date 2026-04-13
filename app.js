@@ -365,7 +365,7 @@ function addClassRow(e, name = '', time = '') {
   row.innerHTML = `
     <input type="text" class="edit-input class-name-input" placeholder="Ders adı" value="${name}" />
     <input type="text" class="edit-input class-time-input" placeholder="09:00 - 11:00" value="${time}" />
-    <button class="remove-class-btn" title="Sil">✕</button>
+    <button class="remove-class-btn" title="Sil" aria-label="Sil">✕</button>
   `;
   row.querySelector('.remove-class-btn').addEventListener('click', () => row.remove());
   container.appendChild(row);
