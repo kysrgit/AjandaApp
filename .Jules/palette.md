@@ -1,0 +1,3 @@
+## 2026-04-15 - Added Global Focus Visible and ARIA Labels
+**Learning:** Found that this vanilla JS app was lacking proper keyboard focus indicators and screen reader labels for icon-only buttons, making it inaccessible for keyboard and screen reader users. The app relies heavily on dynamic DOM generation, meaning accessibility attributes must be applied via both HTML and JavaScript.
+**Action:** Next time, ensure a global `*:focus-visible` rule is established early in the CSS to provide a baseline focus indicator, and consistently apply `aria-label` to any dynamically generated icon-only interactive elements (like the edit buttons) as part of standard component scaffolding.
