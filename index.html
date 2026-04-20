@@ -53,7 +53,7 @@
       <header class="app-header">
         <div class="header-top">
           <h1>📋 Haftalık Ajandam</h1>
-          <button id="settings-btn" class="icon-btn" title="Ayarlar">
+          <button id="settings-btn" class="icon-btn" title="Ayarlar" aria-label="Ayarlar">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3" />
@@ -106,7 +106,7 @@
               şifreli olarak saklanır.</p>
             <div class="api-key-row">
               <input type="password" id="api-key-input" class="edit-input" placeholder="AIza..." autocomplete="off" />
-              <button id="toggle-key-vis" class="icon-btn small" title="Göster/Gizle"
+              <button id="toggle-key-vis" class="icon-btn small" title="Göster/Gizle" aria-label="Göster/Gizle"
                 onclick="toggleKeyVisibility()">👁️</button>
             </div>
           </div>
@@ -189,7 +189,7 @@
           <span class="chat-header-icon">🤖</span>
           <span>Gemini Asistan</span>
         </div>
-        <button id="chat-close" class="close-btn small">✕</button>
+        <button id="chat-close" class="close-btn small" aria-label="Kapat">✕</button>
       </div>
       <div id="chat-messages" class="chat-messages">
         <div class="chat-bubble ai welcome">
@@ -199,7 +199,7 @@
       <div class="chat-input-area">
         <textarea id="chat-input" class="chat-input" placeholder="Örn: Salı'ya Matematik 09:00-11:00 ekle..."
           rows="1"></textarea>
-        <button id="chat-send" class="chat-send-btn" title="Gönder">
+        <button id="chat-send" class="chat-send-btn" title="Gönder" aria-label="Gönder">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
           </svg>
