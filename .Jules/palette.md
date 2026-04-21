@@ -1,0 +1,3 @@
+## 2024-05-18 - Missing ARIA Labels on Icon Buttons and Focus Styles
+**Learning:** Found that multiple icon-only buttons lacked descriptive `aria-label`s, which is critical for screen reader users to understand their function. Keyboard navigation was also missing distinct `:focus-visible` styles, relying on inconsistent or absent default outlines.
+**Action:** When adding or reviewing custom icon buttons in future vanilla JS applications, ensure `aria-label` is always included either in HTML or via `setAttribute`. Add a global `:focus-visible` CSS rule for consistent keyboard navigation feedback.
