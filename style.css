@@ -773,7 +773,7 @@ body::before {
 }
 
 .edit-input:focus {
-  border-color: var(--fitness-color);
+  border-color: #3b82f6;
 }
 
 .edit-input::placeholder {
@@ -847,7 +847,7 @@ body::before {
 }
 
 .btn-primary {
-  background: var(--fitness-color);
+  background: #3b82f6;
   color: #fff;
 }
 
@@ -1086,7 +1086,7 @@ body::before {
 }
 
 .chat-input:focus {
-  border-color: var(--fitness-color);
+  border-color: #3b82f6;
 }
 
 .chat-input::placeholder {
@@ -1098,7 +1098,7 @@ body::before {
   height: 40px;
   border-radius: 50%;
   border: none;
-  background: var(--fitness-color);
+  background: #3b82f6;
   color: #fff;
   cursor: pointer;
   display: flex;
@@ -1361,7 +1361,7 @@ body::before {
 }
 
 .lock-input:focus {
-  border-color: var(--fitness-color);
+  border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -1400,4 +1400,9 @@ body::before {
 
 .settings-actions {
   flex-wrap: wrap;
+}
+/* Accessibility */
+*:focus-visible {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 2px !important;
 }
