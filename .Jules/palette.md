@@ -1,0 +1,3 @@
+## 2024-05-18 - Missing ARIA Labels on Icon Buttons and Suppressed Focus Styles
+**Learning:** In custom UIs, `title` tooltips are often mistakenly used as a substitute for `aria-label`s on icon-only buttons. Additionally, custom components frequently strip default browser outlines (e.g. `outline: none`), leaving interactive elements inaccessible via keyboard navigation without explicit `:focus-visible` fallbacks.
+**Action:** When auditing or building custom components, explicitly verify that interactive elements with only graphical contents receive an `aria-label` (not just `title`), and ensure a global `:focus-visible` rule is implemented to restore keyboard focus visibility.
