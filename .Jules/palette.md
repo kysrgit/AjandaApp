@@ -1,0 +1,3 @@
+## 2024-05-08 - Icon-only Button Accessibility
+**Learning:** Adding `aria-label`s to dynamically generated DOM elements (like the `.day-edit-btn` in `app.js`) is just as critical as updating static HTML. Screen readers depend on this context when the DOM is manipulated via JavaScript. Furthermore, relying on global focus reset (`outline: none`) without a fallback `:focus-visible` rule creates a severe barrier for keyboard navigation.
+**Action:** Always audit both static HTML and JavaScript DOM generation logic for missing `aria-label`s on interactive elements. Implement global `:focus-visible` rules using `:where()` or `:is()` rather than high-specificity overrides to ensure a solid baseline keyboard experience that respects intentional component design.
