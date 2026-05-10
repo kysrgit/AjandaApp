@@ -1,0 +1,3 @@
+## 2026-05-10 - Focus-Visible and ARIA Label Implementations
+**Learning:** Adding global `:focus-visible` states and explicit `aria-label` attributes significantly improves keyboard accessibility and screen reader support without disrupting the existing visual design system or requiring complex DOM restructuring. Playwright verification of pseudo-classes like `:focus-visible` is most reliable when using `window.getComputedStyle` after explicit DOM node focus.
+**Action:** When auditing custom UI components, proactively prioritize adding global `:focus-visible` styles and ensuring all icon-only buttons possess `aria-label` attributes to maintain baseline accessibility standards.
