@@ -1,0 +1,3 @@
+## 2024-05-11 - Missing `for` Attributes on Labels and `aria-label`s on Icon Buttons
+**Learning:** Found that many labels in the edit modal were missing `for` attributes linking them to their corresponding inputs/selects, which breaks click-to-focus and screen reader association. Additionally, icon-only buttons (like the chat send button) and generic inputs (like new/old password fields) were missing `aria-label`s.
+**Action:** Always verify that `<label>` tags explicitly reference the target input's ID using the `for` attribute in custom modal components, and consistently add descriptive `aria-label`s to any button lacking visible text.
