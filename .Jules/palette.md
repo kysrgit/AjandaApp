@@ -1,0 +1,3 @@
+## 2024-05-17 - Focus-visible and Dynamic aria-labels
+**Learning:** When adding keyboard focus states globally, avoid using !important by leveraging :where() to maintain correct specificity and ensure it overrides default outlines properly without interfering with explicit focus states in components. Also, dynamically generated HTML buttons often miss aria-labels which are not caught by standard static analysis.
+**Action:** Always verify keyboard accessibility on all buttons by explicitly testing tab order and visual focus. Add :where(:focus-visible) to global CSS resets when missing. Always check JS files for innerHTML/document.createElement that injects icon-only interactive elements.
