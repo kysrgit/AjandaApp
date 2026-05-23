@@ -1,0 +1,3 @@
+## 2024-05-18 - Missing ARIA Labels on Dynamically Generated DOM Components
+**Learning:** Icon-only buttons throughout the application's HTML and dynamically generated DOM components lack descriptive `aria-label` attributes, creating a significant accessibility barrier for screen reader users as `title` attributes alone are insufficient. Keyboard navigation is also impaired as individual classes often suppress default browser outlines via `outline: none`.
+**Action:** Always explicitly check JS files for dynamically created interactive elements. Add `aria-label`s to dynamically generated icon-only elements and ensure keyboard accessibility by enforcing a global `:focus-visible` rule using `:where()` or `:is()` to prevent overriding component-specific focus states.
