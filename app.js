@@ -52,6 +52,7 @@ function renderWeeklyGrid() {
     editBtn.className = 'day-edit-btn';
     editBtn.innerHTML = '✏️';
     editBtn.title = 'Düzenle';
+    editBtn.setAttribute('aria-label', 'Düzenle');
     editBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       openEditModal(index);
@@ -195,7 +196,7 @@ function createExerciseCard(exercise, index) {
         </div>
       </div>
     </div>
-    <button class="alt-toggle" onclick="toggleAlternative(this)">
+    <button class="alt-toggle" onclick="toggleAlternative(this)" aria-label="Alternatif Egzersizi Göster/Gizle">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
       Alternatif Egzersiz
     </button>
@@ -365,7 +366,7 @@ function addClassRow(e, name = '', time = '') {
   row.innerHTML = `
     <input type="text" class="edit-input class-name-input" placeholder="Ders adı" value="${name}" />
     <input type="text" class="edit-input class-time-input" placeholder="09:00 - 11:00" value="${time}" />
-    <button class="remove-class-btn" title="Sil">✕</button>
+    <button class="remove-class-btn" title="Sil" aria-label="Dersi Sil">✕</button>
   `;
   row.querySelector('.remove-class-btn').addEventListener('click', () => row.remove());
   container.appendChild(row);
