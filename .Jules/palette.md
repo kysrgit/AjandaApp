@@ -1,0 +1,3 @@
+## 2024-05-18 - Adding ARIA Labels to Dynamic Content
+**Learning:** In applications where interactive elements (like edit buttons, removal buttons) are generated dynamically in JS via `document.createElement('button')` or `innerHTML`, it's critical to ensure they receive `aria-label` attributes either through `setAttribute()` or directly in the template literal to remain accessible. The `aria-label` on HTML template strings in `app.js` is as important as the statically written ones in `index.html`.
+**Action:** Always scan `.js` files for dynamically created interactive elements (e.g., buttons, inputs) in addition to `.html` files when checking for missing ARIA labels or accessibility features.
