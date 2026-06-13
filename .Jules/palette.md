@@ -1,0 +1,3 @@
+## 2024-06-13 - Icon-Only Button Accessibility Pattern
+**Learning:** In applications utilizing a mix of static HTML and dynamically generated programmatic UI, screen reader accessibility degrades when icon-only buttons rely merely on `title` attributes or text emojis. While sighted users benefit from these visual cues, assistive technologies require explicit text associations to accurately announce the button's purpose.
+**Action:** Always verify that icon-only interactive elements contain explicit, localized `aria-label` attributes across both static HTML templates and JavaScript DOM generation to ensure consistent assistive technology support.
