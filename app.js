@@ -52,6 +52,7 @@ function renderWeeklyGrid() {
     editBtn.className = 'day-edit-btn';
     editBtn.innerHTML = '✏️';
     editBtn.title = 'Düzenle';
+    editBtn.setAttribute('aria-label', 'Düzenle');
     editBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       openEditModal(index);
