@@ -1,0 +1,3 @@
+## 2024-10-27 - Dynamically Generated Buttons Lack ARIA Labels
+**Learning:** In this application, interactive elements like icon-only buttons (e.g., `day-edit-btn` and `remove-class-btn`) are often created dynamically via JavaScript (`document.createElement` or `innerHTML`). These dynamically generated elements are easily overlooked during static HTML accessibility reviews and frequently lack necessary ARIA attributes like `aria-label`.
+**Action:** Always explicitly check JavaScript files for dynamically created interactive elements and ensure they include appropriate accessibility attributes (like `aria-label` or `aria-describedby`) during creation, maintaining parity with static HTML accessibility standards.
