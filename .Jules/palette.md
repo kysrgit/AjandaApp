@@ -1,0 +1,3 @@
+## 2024-06-29 - Missing ARIA Labels in Dynamic Content
+**Learning:** Icon-only buttons throughout the application's HTML and dynamically generated DOM components (e.g., injected via `innerHTML` or `document.createElement`) must include descriptive `aria-label` attributes to maintain screen reader accessibility. Forms in custom modals should explicitly reference their target input's ID using the `for` attribute, and inputs grouped under a general label should use `aria-label` to provide context.
+**Action:** Add `aria-label` attributes to missing interactive elements and `for` attributes to form labels across `index.html` and `app.js`.
