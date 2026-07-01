@@ -1,0 +1,3 @@
+## 2024-05-19 - Added ARIA labels to Icon Buttons
+**Learning:** Found multiple instances where the application relies entirely on visual icons for button components (such as settings, editing, and chat inputs), lacking proper accessible labels for screen reader compatibility. This is an application-specific pattern spanning both statically declared elements in HTML and dynamically generated elements in JS.
+**Action:** Always verify that both static HTML `<button>` elements and dynamically created `document.createElement('button')` elements or string interpolated HTML components contain `aria-label` attributes to ensure parity with visual cues (titles/icons).
