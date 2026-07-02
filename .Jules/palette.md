@@ -1,0 +1,3 @@
+## 2024-07-02 - Added ARIA labels to icon-only buttons
+**Learning:** Found that multiple icon-only buttons in the application, both static (index.html) and dynamic (app.js), lacked accessible names for screen readers. Using titles helps mouse users but `aria-label` provides a reliable accessible name for screen reader users.
+**Action:** Added `aria-label` to all icon-only buttons (`#settings-btn`, `#toggle-key-vis`, `#chat-fab`, `#chat-close`, `#chat-send`, edit, and delete class buttons). Ensure future dynamically generated DOM components include `aria-label` or semantic accessible names for icon-only inputs.
