@@ -1,0 +1,3 @@
+## 2024-07-04 - Screen Reader Unfriendly Icon Buttons
+**Learning:** The application extensively uses `title` attributes for tooltips on icon-only buttons (like `#settings-btn`, `#chat-fab`, and dynamically created `.day-edit-btn`) but frequently omits the required `aria-label`. This pattern means assistive technologies might not accurately announce the button's purpose, leading to an inaccessible experience for screen reader users.
+**Action:** Always pair `title` attributes (for sighted users) with explicit `aria-label` attributes (for assistive technology) on icon-only buttons, and ensure dynamically generated DOM elements explicitly set these using `.setAttribute('aria-label', ...)`.
